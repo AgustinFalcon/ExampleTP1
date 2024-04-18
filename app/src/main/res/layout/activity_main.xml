@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/title_main_activity"
+        android:textAlignment="center"
+        android:textSize="50dp"/>
+
+
+    <EditText
+        android:id="@+id/etEnterName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:hint="@string/edit_text_hint_name"/>
+
+    <EditText
+        android:id="@+id/etEnterPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="@string/edit_text_hint_password"/>
+
+    <CheckBox
+        android:id="@+id/checkboxLoginAutomatico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+    <Button
+        android:id="@+id/btnSingIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/green"
+        android:text="Ingresar"
+        android:textSize="16sp"
+        android:textAllCaps="false"/>
+
+
+    <Button
+        android:id="@+id/btnSingUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/blue"
+        android:text="Registrate"
+        android:textSize="16sp"
+        android:textAllCaps="false"/>
+
+    <!-- Comment -->
+
+
+
+</LinearLayout>
