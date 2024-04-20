@@ -6,5 +6,6 @@ import java.io.Serializable
 data class Persona(
     val name: String,
     val email: String,
-    val password: String
+    val password: String,
+    val color: Colors
 ): Serializable

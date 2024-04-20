@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.examplesharedpreferences.databinding.ActivityMainBinding
 import com.google.gson.Gson
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,15 +26,22 @@ class MainActivity : AppCompatActivity() {
         //val btnSingIn = findViewById<Button>(R.id.btnSingIn)
 
         //btnSingIn.setBackgroundColor(R.color.green)
-        val checkBox = binding.checkboxLoginAutomatico.isChecked
+
 
         val preferecias = getSharedPreferences(RegisterActivity.CREDENTIALS, MODE_PRIVATE)
-        val edit = preferecias.edit()
-        edit.putBoolean("autoLogin", checkBox)
-        edit.apply()
+
+        val autoLogin = preferecias.getBoolean("autoLogin", false)
+        if (autoLogin == true) {
+            goToHomeActivity()
+        }
 
 
         binding.btnSingIn.setOnClickListener {
+            val checkBox = binding.checkboxLoginAutomatico.isChecked
+            val edit = preferecias.edit()
+            edit.putBoolean("autoLogin", checkBox)
+            edit.apply()
+
             val name = binding.etEnterName.text.toString()
             val password = binding.etEnterPassword.text.toString()
 
@@ -50,6 +58,8 @@ class MainActivity : AppCompatActivity() {
 
 
                 } else {
+                    edit.putBoolean("autoLogin", false)
+                    edit.apply()
                     Toast.makeText(this, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -58,8 +68,9 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnSingUp.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            //val intent = Intent(this, RegisterActivity::class.java)
+            //startActivity(intent)
+            goToHomeActivity()
         }
     }
 
@@ -75,11 +86,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun validateData(name: String?, password: String?): Boolean {
-        val preferecias = getSharedPreferences(RegisterActivity.CREDENTIALS, MODE_PRIVATE)
-        val personJson = preferecias.getString("persona", "")
+        var person = Persona("","","", Colors.BLUE)
+        try {
+            val preferecias = getSharedPreferences(RegisterActivity.CREDENTIALS, MODE_PRIVATE)
+            val personJson = preferecias.getString("persona", "")
 
-        val gson = Gson()
-        val person = gson.fromJson(personJson, Persona::class.java)
+            val gson = Gson()
+            person = gson.fromJson(personJson, Persona::class.java)
+
+        } catch (e: Exception) {
+
+        }
+
 
         //val prefName = preferecias.getString("name", "")
         //val prefPass = preferecias.getString("password", "")

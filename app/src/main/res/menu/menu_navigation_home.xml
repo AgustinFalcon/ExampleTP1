@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group>
+        <item android:id="@+id/nav_item_one"
+            android:icon="@drawable/item_home"
+            android:title="Item 1"/>
+
+        <item android:id="@+id/nav_item_two"
+            android:icon="@drawable/img_menu_nav"
+            android:title="Item 2"/>
+
+        <item android:id="@+id/nav_item_three"
+            android:icon="@drawable/ic_person"
+            android:title="Item 3"/>
+
+    </group>
+</menu>
