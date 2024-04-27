@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import com.example.examplesharedpreferences.databinding.ActivityMainBinding
 import com.google.gson.Gson
 import java.lang.Exception

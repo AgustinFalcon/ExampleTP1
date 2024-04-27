@@ -24,13 +24,13 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
 
-        <Button
-            android:id="@+id/btnSalir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Salir"
-            android:layout_marginTop="250dp"
-            android:layout_gravity="center"/>
+        <LinearLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
+
+
     </LinearLayout>
 
 

@@ -9,7 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.example.examplesharedpreferences.databinding.ActivityHomeBinding
+import com.example.examplesharedpreferences.fragments.FirstFragment
+import com.example.examplesharedpreferences.fragments.SecondFragment
+import com.example.examplesharedpreferences.fragments.ThirdFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 
@@ -58,32 +62,52 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //binding.tvResultName.text = person.name
 
-
-        binding.btnSalir.setOnClickListener {
-            preferencias.edit().clear().apply()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        if (savedInstanceState == null) {
+            replaceFragment(FirstFragment())
+            navigationView.setCheckedItem(R.id.nav_item_one)
         }
 
+        //binding.btnSalir.setOnClickListener {
+        //    preferencias.edit().clear().apply()
+        //    val intent = Intent(this, MainActivity::class.java)
+        //   startActivity(intent)
+        //}
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.nav_item_one -> {
-                Toast.makeText(this, "Item1", Toast.LENGTH_SHORT).show()
-                val intent = Intent()
+                replaceFragment(FirstFragment())
             }
 
             R.id.nav_item_two -> {
-                Toast.makeText(this, "Item2", Toast.LENGTH_SHORT).show()
+                replaceFragment(SecondFragment())
             }
 
             R.id.nav_item_three -> {
-                Toast.makeText(this, "Item3", Toast.LENGTH_SHORT).show()
+                replaceFragment(ThirdFragment())
             }
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragmentContainer, fragment)
+        transaction.commit()
+    }
+
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+
+        } else {
+            //finish()
+            //onBackPressedDispatcher.onBackPressed()
+        }
     }
 }
